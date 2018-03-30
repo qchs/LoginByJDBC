@@ -97,14 +97,22 @@ public class Demo {
             //处理查询结果集；
             System.out.println(login);
             rs=stmt.executeQuery(login);
-            if (rs.next()) {
-                System.out.println("登陆成功！");
-            }else {
-                System.out.println("登录失败！");
+//            if (rs.next()) {
+//                System.out.println("登陆成功！");
+//            }else {
+//                System.out.println("登录失败！");
+//            }
+
+
+            while (rs.next()){
+                String userName1=rs.getString(1);
+                String pwd1=rs.getString(2);
+                if (pwd1.equals(pwd) && userName1.equals(userName)) {
+                    System.out.println("登录成功");
+                    break;
+                }
+                System.out.println(userName1+"\t"+pwd1);
             }
-
-
-
 
         } catch (Exception e) {
             e.printStackTrace();

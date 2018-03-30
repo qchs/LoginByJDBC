@@ -14,7 +14,10 @@
 1.创建数据库userLogin  create database userLogin;
 2.进入该数据库 use uesrLogin;
 3.创建表userInfo，两列 类型都为String，分别是userName和pwd
-  create table userInfo(userName VARCHAR(20),pwd VARCHAR(20));
+  create table userInfo(
+    userName VARCHAR(20),
+    pwd VARCHAR(20)
+  );
 4.插入数据 insert into userinfo values ("lei","bgsn");
 5.删除数据 delete from userinfo where pwd="?";
 6.更改数据 update userinfo set userName="f" where pwd='bgsn';

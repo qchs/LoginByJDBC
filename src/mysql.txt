@@ -1,0 +1,18 @@
+1.用管理员身份打开cmd
+2.切换盘符到d盘 d:
+3.进入MySQL的安装bin目录 cd: java\mysql...\bin
+（启动MySQL net start mysql）
+4.登陆MySQL mysql -u root -p
+5.输入密码，无，回车即可进入
+
+1.查看数据库 show databases; 分号不可少
+2.进入某个数据库 use 数据库名；
+3.查看数据库里的表 show tables;
+4.查看表的详细描述 describe 表名;
+5.查看表里的数据 select * from 表名;
+
+1.创建数据库userLogin  create database userLogin;
+2.进入该数据库 use uesrLogin;
+3.创建表userInfo，两列 类型都为String，分别是userName和pwd
+  create table userInfo(userName VARCHAR(20),pwd VARCHAR(20));
+4.插入数据 insert into userinfo values ("lei","bgsn");

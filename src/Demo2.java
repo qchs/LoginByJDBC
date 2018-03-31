@@ -3,7 +3,6 @@ package LoginByJDBC.src;
 import java.io.FileReader;
 import java.sql.*;
 import java.util.Properties;
-import java.util.Scanner;
 
 /**
  * Created by Lenovo on 2018/3/30.
@@ -35,33 +34,40 @@ public class Demo2 {
             conn= DriverManager.getConnection(url,user,password);
             System.out.println(conn);
             //sql语句框架
-            String sql_in="select userName from userinfo where userName=? and pwd=?";
+//            String sql_in="select userName from userinfo where userName=? and pwd=?";
+            String sql_in="select * from userinfo where pwd like ?";
             //sql语句预编译
             ps=conn.prepareStatement(sql_in);
 
-            System.out.println("欢迎登陆！");
-            Scanner sc=new Scanner(System.in);
-            System.out.println("请输入用户名：");
-            String userName = sc.next();
-            sc.useDelimiter("\n");
-            System.out.println("请输入密码：");
-            String pwd=sc.next();
-//            pwd="asd\' or \'aa\'=\'aa";
-            System.out.println(pwd);
+//            System.out.println("欢迎登陆！");
+//            Scanner sc=new Scanner(System.in);
+//            System.out.println("请输入用户名：");
+//            String userName = sc.next();
+//            sc.useDelimiter("\n");
+//            System.out.println("请输入密码：");
+//            String pwd=sc.next();
+////            pwd="asd\' or \'aa\'=\'aa";
+//            System.out.println(pwd);
+//
+//            //对占位符赋值
+            ps.setString(1,"%f%");
+//            ps.setString(2,pwd);
+//            //查询：
+//            rs=ps.executeQuery();
+//            System.out.println(rs);
+//
+//            if (rs.next()) {
+//                System.out.println("登录成功");
+//            }else {
+//                System.out.println("登录失败");
+//            }
+            //不使用占位符，就是想打印出所有数据，ps返回的数据集有吗
+            rs = ps.executeQuery();
+            System.out.println(sql_in);
 
-            //对占位符赋值
-            ps.setString(1,userName);
-            ps.setString(2,pwd);
-            //查询：
-            rs=ps.executeQuery();
-            System.out.println(rs);
-
-            if (rs.next()) {
-                System.out.println("登录成功");
-            }else {
-                System.out.println("登录失败");
+            while (rs.next()){
+                System.out.println(rs.getString("pwd"));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
